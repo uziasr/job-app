@@ -71,7 +71,7 @@ export default function JobGrid(){
     return(
         <GridContainer>
             <h2>{`There are ${companyArr.length} ${tech} jobs in ${location.split('_').join(' ')} `}</h2> 
-            <FormWrapper>
+            <FormWrapper className='inputs'>
                 <FormGroup>
                     <Label for="exampleSelect">Select City</Label>
                     <Input type="select" name="select" id="citySelect">

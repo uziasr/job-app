@@ -4,18 +4,32 @@ import styled from 'styled-components'
 
 const TextWrap = styled.div`
 display:flex;
-justify-contetn:center;
+justify-content:center;
 align-content: center;
 align-items: center;
 margin: auto;
+@media (max-width: 768px) {
+  flex-direction: column;
+}
+
 `
 const RightWrap = styled.div`
 width: 60%;
 margin: 3% 3% 3% 1.5%;
+@media (max-width: 768px) {
+  width: 90%;
+  margin: 2% auto;
+
+}
 `
 const LeftWrap = styled.div`
 width: 35%;
 margin: 3% 1.5% 3% 3%;
+@media (max-width: 768px) {
+  width: 90%;
+  margin: 4% auto;
+
+}
 
 `
 
