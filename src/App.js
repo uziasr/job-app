@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
     <HashRouter>
-      <Route exact path='/job-app' component={JobJumbo}/>
-      <Route exact path='/job-app' component={JobGrid}/> 
+      <Route exact path='/' component={JobJumbo}/>
+      <Route exact path='/' component={JobGrid}/> 
       <Route path='/Job/:id' component={Job}/>
     </HashRouter>
     </div>
