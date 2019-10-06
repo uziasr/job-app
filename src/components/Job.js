@@ -53,7 +53,7 @@ export default function Job(props){
       <TextWrap>
         <LeftWrap>
         <h1>{jobObj.title}</h1>
-        <p>{noHTML  (jobObj.how_to_apply)}</p>
+        <p>{noHTML(jobObj.how_to_apply)}</p>
         </LeftWrap>
         <RightWrap>
         {noHTML(jobObj.description)}
