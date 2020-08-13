@@ -17,18 +17,18 @@ width: 100%;
 }
 
 `
-const RightWrap = styled.div`
-width: 100%;
-margin: 3% 3% 3% 1.5%;
+const BottomWrap = styled.div`
+width: 80%;
+margin: 2%;
 @media (max-width: 768px) {
-  width: 100%;
+  width: 95%;
   margin: 2% auto;
-
 }
 `
 const TopWrap = styled.div`
 width: 100%;
-margin: 3% 1.5% 3% 3%;
+margin: 1.5%;
+marginTop: 3%;
 @media (max-width: 768px) {
   width: 90%;
   margin: 4% auto;
@@ -38,7 +38,6 @@ margin: 3% 1.5% 3% 3%;
 
 const Link = styled.a`
 color: blue;
-
 `
 
 export default function Job(props){
@@ -72,11 +71,11 @@ export default function Job(props){
         <h1>{jobObj.title}</h1>
         <Link href={noHTML(jobObj.how_to_apply)}>{noHTML(jobObj.how_to_apply)}</Link>
         </TopWrap>
-        <RightWrap>
+        <BottomWrap>
         <JsxParser
           jsx={jobObj.description}
           />
-        </RightWrap>
+        </BottomWrap>
       </TextWrap>
     )
 }
