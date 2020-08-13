@@ -2,8 +2,7 @@ import React from "react";
 import "./App.css";
 import JobGrid from './components/JobGrid'
 import JobJumbo from './components/JobJumbo'
-import styled from 'styled-components'
-import {HashRouter, Route, BrowserRouter as Router} from 'react-router-dom'
+import {HashRouter, Route} from 'react-router-dom'
 import Job from './components/Job'
 
 

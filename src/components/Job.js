@@ -1,35 +1,43 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import styled from 'styled-components'  
+import styled from 'styled-components'
+import JsxParser from 'react-jsx-parser'
+
 
 const TextWrap = styled.div`
 display:flex;
+flex-direction: column;
 justify-content:center;
 align-content: center;
 align-items: center;
 margin: auto;
+width: 100%;
 @media (max-width: 768px) {
   flex-direction: column;
 }
 
 `
 const RightWrap = styled.div`
-width: 60%;
+width: 100%;
 margin: 3% 3% 3% 1.5%;
 @media (max-width: 768px) {
-  width: 90%;
+  width: 100%;
   margin: 2% auto;
 
 }
 `
-const LeftWrap = styled.div`
-width: 35%;
+const TopWrap = styled.div`
+width: 100%;
 margin: 3% 1.5% 3% 3%;
 @media (max-width: 768px) {
   width: 90%;
   margin: 4% auto;
-
 }
+
+`
+
+const Link = styled.a`
+color: blue;
 
 `
 
@@ -39,11 +47,6 @@ export default function Job(props){
     // const [job,city, id] = url.split('-')
     useEffect(() => {
         const [job,city, id] = (props.match.params.id).split('-')
-        console.log(job, city, id)
-        
-            // setUrl(props.match.params.id)
-            // console.log(url)
-            console.log('outside axios')
           axios
             .get(`https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${job}&full_time=true&location=${city}`)
             .then(response => {
@@ -55,22 +58,24 @@ export default function Job(props){
        
         
       }, []);
-    console.log(jobObj)
-    console.log(props)
+
     function noHTML(text){
       if (text){
       return text.replace(/<[^>]*>?/gm, '');
       }
     }
 
+
     return(
       <TextWrap>
-        <LeftWrap>
+        <TopWrap>
         <h1>{jobObj.title}</h1>
-        <p>{noHTML(jobObj.how_to_apply)}</p>
-        </LeftWrap>
+        <Link href={noHTML(jobObj.how_to_apply)}>{noHTML(jobObj.how_to_apply)}</Link>
+        </TopWrap>
         <RightWrap>
-        {noHTML(jobObj.description)}
+        <JsxParser
+          jsx={jobObj.description}
+          />
         </RightWrap>
       </TextWrap>
     )

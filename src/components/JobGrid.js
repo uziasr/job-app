@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import JobCard from './JobCard'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
 // import {Link} from 'react-router-dom'
 import {languages, cityNames} from '../data'
 
@@ -33,7 +33,7 @@ const GridContainer = styled.div`
 export default function JobGrid(){
 
     const [companyArr, setCompanyArr] = useState([])
-    const [tech, setTech] = useState('Python')
+    const [tech, setTech] = useState('JavaScript')
     const [location, setLocation] = useState('San_Francisco')
     const [url ,setTheUrl] = useState(`https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=Python&full_time=true&location=$San_Franciso`)
 
@@ -41,8 +41,6 @@ export default function JobGrid(){
         return (`https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${lang}&full_time=true&location=${loc}`)
     }
     
-    const tech_list = ['Python','Java', 'JavaScript', 'C++', 'C']
-    const location_list = ['San_Francisco','Los_Angeles','New_York','Las_Vegas','San_Diego','Berkeley']
 
     function getInput(){
         let city = document.getElementById('citySelect').value
@@ -58,7 +56,6 @@ export default function JobGrid(){
     useEffect(()=>{ 
     axios
     .get(url)
-    //.get('https://swapi.co/api/people/?page=1')
     .then(response=>{
         setCompanyArr(response.data);
     })
@@ -67,7 +64,6 @@ export default function JobGrid(){
     },[url])
 
    
-    console.log(companyArr)
     return(
         <GridContainer>
             <h2>{`There are ${companyArr.length} ${tech} jobs in ${location.split('_').join(' ')} `}</h2> 
@@ -75,16 +71,16 @@ export default function JobGrid(){
                 <FormGroup>
                     <Label for="exampleSelect">Select City</Label>
                     <Input type="select" name="select" id="citySelect">
-                    {cityNames.map(lang =>
-                        <option>{lang.split('_').join(' ')}</option>
+                    {cityNames.map((lang, index) =>
+                        <option key={index}>{lang.split('_').join(' ')}</option>
                         )}
                     </Input>
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleSelect">Select Language</Label>
                     <Input type="select" name="select" id="langSelect">
-                        {languages.map(lang =>
-                        <option>{lang}</option>
+                        {languages.map((lang, index) =>
+                        <option key={index}>{lang}</option>
                         )}
                     </Input>
                 </FormGroup>
