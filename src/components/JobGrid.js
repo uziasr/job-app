@@ -28,12 +28,14 @@ background-color: white;
 const GridContainer = styled.div`
 // padding: 2% 0;
 `
-
+const H2 = styled.h2`
+    text-align: center;
+`
 
 export default function JobGrid(){
 
     const [companyArr, setCompanyArr] = useState([])
-    const [tech, setTech] = useState('JavaScript')
+    const [tech, setTech] = useState('Python')
     const [location, setLocation] = useState('San_Francisco')
     const [url ,setTheUrl] = useState(`https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=Python&full_time=true&location=$San_Franciso`)
 
@@ -66,7 +68,7 @@ export default function JobGrid(){
    
     return(
         <GridContainer>
-            <h2>{`There are ${companyArr.length} ${tech} jobs in ${location.split('_').join(' ')} `}</h2> 
+            <H2>{`There are ${companyArr.length} ${tech} jobs in ${location.split('_').join(' ')} `}</H2> 
             <FormWrapper className='inputs'>
                 <FormGroup>
                     <Label for="exampleSelect">Select City</Label>

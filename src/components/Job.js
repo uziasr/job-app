@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import { Button } from 'reactstrap';
 import JsxParser from 'react-jsx-parser'
 
 
@@ -12,14 +13,17 @@ align-content: center;
 align-items: center;
 margin: auto;
 width: 100%;
+height: 100%
+background: whitesmoke;
 @media (max-width: 768px) {
   flex-direction: column;
 }
 
 `
 const BottomWrap = styled.div`
-width: 80%;
+width: 70%;
 margin: 2%;
+display: flex;
 @media (max-width: 768px) {
   width: 95%;
   margin: 2% auto;
@@ -29,6 +33,10 @@ const TopWrap = styled.div`
 width: 100%;
 margin: 1.5%;
 marginTop: 3%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 @media (max-width: 768px) {
   width: 90%;
   margin: 4% auto;
@@ -37,7 +45,11 @@ marginTop: 3%;
 `
 
 const Link = styled.a`
-color: blue;
+color: white;
+:hover{
+  text-decoration: none;
+  color: white;
+}
 `
 
 export default function Job(props){
@@ -64,12 +76,16 @@ export default function Job(props){
       }
     }
 
+    function saveJob() {
+
+    }
 
     return(
       <TextWrap>
         <TopWrap>
         <h1>{jobObj.title}</h1>
-        <Link href={noHTML(jobObj.how_to_apply)}>{noHTML(jobObj.how_to_apply)}</Link>
+        
+        <Button className="applyButton" onClick={()=>{}} variant="secondary"><Link href={noHTML(jobObj.how_to_apply)}>Apply</Link></Button>
         </TopWrap>
         <BottomWrap>
         <JsxParser
